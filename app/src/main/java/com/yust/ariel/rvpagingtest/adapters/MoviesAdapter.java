@@ -33,18 +33,21 @@ public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.ViewHolder
     }
 
     public void addMovies(MoviesData newMoviesData) {
+        if (newMoviesData==null || newMoviesData.getResults() ==null)return;
+
         int newMoviesSize, oldMoviesSize;
+
         if (mMoviesData == null) {
             mMoviesData = newMoviesData;
             oldMoviesSize = 0;
             newMoviesSize = mMoviesData.getResults().size();
-            notifyDataSetChanged();
         } else {
             newMoviesSize = newMoviesData.getResults().size();
             oldMoviesSize = mMoviesData.getResults().size();
             mMoviesData.getResults().addAll(newMoviesData.getResults());
-            notifyItemRangeInserted(oldMoviesSize, newMoviesSize);
         }
+
+        notifyItemRangeInserted(oldMoviesSize, newMoviesSize);
         mMaxPage = mMoviesData.getPage();
         Timber.d("MoviesAdapter", "Added " + newMoviesSize + " new movies");
     }

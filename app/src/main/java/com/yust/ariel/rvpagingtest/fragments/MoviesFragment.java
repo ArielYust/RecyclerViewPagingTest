@@ -81,19 +81,12 @@ public class MoviesFragment extends Fragment {
         return v;
     }
 
-    private Handler mMainHandler = new Handler(Looper.getMainLooper());
-
     private void loadPage(Context context, int page) {
         WebApiHub.getDefault().getPopularMovies(context, page).enqueue(new Callback<MoviesData>() {
             @Override
             public void onResponse(Call<MoviesData> call, final Response<MoviesData> response) {
                 if (mRvAdapter != null) {
-                    mMainHandler.post(new Runnable() {
-                        @Override
-                        public void run() {
-                            mRvAdapter.addMovies(response.body());
-                        }
-                    });
+                    mRvAdapter.addMovies(response.body());
                 }
             }
 
