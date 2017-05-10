@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="web_api_base_url">https://api.themoviedb.org/3/</string>
+    <string name="web_api_image_base_url">http://image.tmdb.org/t/p/w185//</string>
+    <string name="web_api_key">943f1796bebf5b4cab7d538279722c15</string>
+</resources>
